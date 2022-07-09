@@ -6,6 +6,14 @@ from flask import Flask, jsonify, redirect, url_for, render_template
 from flask import request
 from flask import session
 
+import flask_excel as excel
+
+import openpyxl
+from openpyxl import Workbook
+from openpyxl import load_workbook
+import datetime
+
+
 import pandas as pd
 import json
 import csv
@@ -17,11 +25,12 @@ from models.new_user import Model_new_user
 from models.validation import Validation
 
 # Este es el modelo que cree para realizar las predicciones
-from models.classifier import Classifier as pred
+from models.classifier import Classifier as cls
 
 #-------------------------------
 #       APLICACION
 #-------------------------------
+
 # Creo una instancia de Flask
 # Esto es importante porque a traves de esto la aplicacion
 # sabe donde buscar los archivos :html,statiics ,ect
@@ -36,6 +45,7 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 app.secret_key = 'ItShouldBeAnythingButSecret'
 
+excel.init_excel(app) # required since version 0.0.7
                 #-------------------------------
                 #       CREAR RUTAS
                 #-------------------------------
@@ -57,7 +67,41 @@ def index():
     users = User.get_users()
     # Paso la variable a la vista para mostrar los usuarios
     return render_template('index.html', users = users)
+#---------------.-----
+#    Entitlement report
+#----------------------
+@app.route('/entitlement/', methods = ['GET','POST'])
+def entitlement():
+    if request.method == 'POST':
 
+        f = request.files['file']
+        # Leo el archivo queme llega por request
+        df1 = pd.read_excel(f,'Journals')
+        df2 = pd.read_excel(f,'Perpetual Access')
+        df3 = pd.read_excel(f,'Databases')
+        df4 = pd.read_excel(f,'DB Jumpstarts')
+
+        # Convertimos Excel
+        dfex1 = df1.to_excel("portfolio1.xlsx", index=False)
+        dfex2 = df2.to_excel("portfolio2.xlsx", index=False)
+        dfex3 = df3.to_excel("portfolio3.xlsx", index=False)
+        dfex4 = df4.to_excel("portfolio4.xlsx", index=False)
+
+        count = int(len(df1))
+        return render_template('entitlementData.html',df1 = df1, count = count)
+
+    #df = pd.read_csv("iris.csv")
+    # axos='columns' to count with respect to row
+    #count = int(len(df))
+    # Paso el count de los elementos dentro del data y el dataset completo
+    #return render_template('irisData.html',df = df, count = count)
+    return render_template('entitlement.html')
+
+
+@app.route("/export/", methods=['GET'])
+def export_records():
+    return excel.make_response_from_array([[1,2], [3, 4]], "xls",
+                                          file_name="export_data")
 #---------------
 #    GET DATA
 #----------------
@@ -68,6 +112,8 @@ def irisData():
     count = int(len(df))
     # Paso el count de los elementos dentro del data y el dataset completo
     return render_template('irisData.html',df = df, count = count)
+
+
 #---------------
 #    INSERT
 #----------------

@@ -1,0 +1,92 @@
+{% extends "registered_layout.html" %}
+{% include 'modals.html' %}
+{% block content %}
+  <h2></h2>
+  <br>
+  <br>
+  <br>
+  <h3>{{session['user']}},  aqui puedes modificar el Dataset:</h3>
+  <br>
+  <div class="">
+    <!--llamo a mi modal a traves de javascript. Lo llame con INCLUDE en el r3gistered_layout.html -->
+    <button class="w3-button w3-round w3-red" onclick="document.getElementById('insertModal').style.display='block'" >New entry</button>
+    <button class="w3-button w3-round w3-red" onclick="document.getElementById('predictModal').style.display='block'">New prediction</button>
+  </div>
+
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'London')">London</button>
+    <button class="tablinks" onclick="openCity(event, 'Paris')">Paris</button>
+    <button class="tablinks" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+  </div>
+
+  <div id="London" class="tabcontent">
+    <h3>London</h3>
+    <p>London is the capital city of England.</p>
+  </div>
+
+  <div id="Paris" class="tabcontent">
+    <h3>Paris</h3>
+    <p>Paris is the capital of France.</p>
+  </div>
+
+  <div id="Tokyo" class="tabcontent">
+    <h3>Tokyo</h3>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
+  <br>
+  
+  <div>
+    <table id="data" class="table table-hover">
+      <thead>
+        <tr class="w3-green">
+          <th>Journal Title</th>
+          <th>Sepal L.</th>
+          <th>Sepal W.</th>
+          <th>Petal W.</th>
+          <th>Petal L.</th>
+          <th>Especie</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for i in range(count)%}
+            <tr>
+              <form class="" action="/iris/{{i}}/update/" method="post">
+                <td>{{i}}</td>
+                <td>
+                  {{df1[i]}}</a>
+                </td>
+                <td>
+                  <input name="i" value="{{i}}" type ="hidden">
+                  <button class="w3-button w3-round w3-indigo" type="submit" name="Update" value="Update">UPDATE</button>
+                </td>
+              </form>
+
+              <td
+              </td>
+              <form action="/iris/{{i}}/delete/" method="POST">
+                 <input name="i" value="{{i}}" type ="hidden">
+                 <button class="w3-button w3-round w3-red" type="submit" name="Delete" value="Delete">DELETE</button>
+              </form>
+            </tr>
+          {%endfor%}
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+function openCity(evt, cityName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+{% endblock %}

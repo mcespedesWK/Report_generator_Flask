@@ -23,16 +23,21 @@
     <!----------------------------------------------------------------------->
     <!-- Le indicamos que queremos q se desplige en forma de nav bar --->
     <div class="w3-container" style="width :100%">
+
         <div class="topnav">
           <!-- LOGIN BUTTON-->
           <a><i class="fa fa-fw fa-user"></i> {{session['user']}}</a>
           <a class="active" href="{{ url_for('logout')}}" ><i class="fa fa-fw fa-sign-out"></i> Logout</a>
 
         </div class="w3-container w3-bar-block w3-large">
+
         <div class="">
           <div class="w3-sidebar w3-bar-block w3-large w3-black">
             <a class="w3-bar-item w3-button" href="{{ url_for('dashboard')}}" >Home</a>
-            <a class="w3-bar-item w3-button" href="{{ url_for('irisData')}}">Iris data</a>
+            <a class="w3-bar-item w3-button" href="{{ url_for('entitlement')}}">Entitlement</a>
+            <a class="w3-bar-item w3-button" href="#">Counter 5</a>
+            <a class="w3-bar-item w3-button" href="#">Ovid WebStats</a>
+
           </div>
             <!-- Incluyo el html de modales para el login y register
                 COmo estan ten el mismo directorio solo escribo el nombre del html-------->

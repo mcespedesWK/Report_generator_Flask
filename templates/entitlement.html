@@ -1,0 +1,26 @@
+{% extends "registered_layout.html" %}
+{% include 'modals.html' %}
+{% block content %}
+  <h2></h2>
+  <br>
+  <br>
+  <br>
+  <h3>{{session['user']}},  aqui puedes modificar el Dataset:</h3>
+  <br>
+  <p>El data set contiene : <strong>{{count}} registros.</strong></p>
+  <div class="">
+    <!--llamo a mi modal a traves de javascript. Lo llame con INCLUDE en el r3gistered_layout.html -->
+    <button class="w3-button w3-round w3-green" onclick="document.getElementById('insertModal').style.display='block'" >New entry</button>
+    <button class="w3-button w3-round w3-indigo" onclick="document.getElementById('predictModal').style.display='block'">New prediction</button>
+  </div>
+  <br>
+  <div>
+
+    <h1>File Upload</h1>
+    <form method="POST" action="" enctype="multipart/form-data">
+      <p><input type="file" name="file"></p>
+      <p><input type="submit" value="Submit"></p>
+    </form>
+    
+  </div>
+{% endblock %}

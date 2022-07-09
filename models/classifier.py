@@ -1,56 +1,32 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-# Lo primer es desidir si estamos antes un problema de:
 
-    # 1- Regresión
-    # 2- Clasificacion
-    # 3- Clustering
-#--------------------------------------#
-# ---     1- DesicionClasifier     -----
-#--------------------------------------#
-# Para saber que libreria utilizar es necesario saber ante que problema nos enfrenteamos
-# En este caso utilizamos un algoritmo de      ----> Clasificacion Multivariable <-------
-# En donde la salida es de 0,1,2
-from sklearn.tree import DecisionTreeClassifier
-#--------------------------------------#
-# ---   2- RandomForestClassifier  -----
-#--------------------------------------#
-from sklearn.ensemble import RandomForestClassifier
-
-# Ahora importo la libreria de sklearn para crear mis SETs de Training y TEST
-from sklearn.model_selection import train_test_split
-
-# Ahora EVALUO EL MODELO
-# Uso accuracy_Score pero hay otras
-
-from sklearn.metrics import accuracy_score
+import openpyxl
+from openpyxl import Workbook
+from openpyxl import load_workbook
+import datetime
 
 class Classifier():
+    # Recibo el nombre del reporte como parametro
+    def setUp(this):
+        #---------------------#
+        #       WORK BOOK     #
+        #---------------------#
+        wb = load_workbook("test.xlsx")
 
-    def setUp():
-        df = pd.read_csv("iris.csv")
-        # Usamos map para transformar el texto en numeros
-        # Existen más formas de hacerlo
-        # En Pandas para nombrar una columna concreta se escribe : nombre_dataframe.nombre_columna
-        # Entonces lo que estamos haciendo es cambiar los valores por otros
-        # De esta forma es mas facil clasificarlo en el dataset
-        df.species = df.species.map({'setosa':0,'versicolor':1, 'virginica':2})
-        #------------ COnfigurar eje Y --------------
-        # El eje Y va a estar definido por la columna Species
-        # Entonces asignamos la column a a la variable Y
-        Y = df["species"]
-        # Hacemos lo mismo con la Y
-        Y = Y.values
-        #-------- Configurar eje X ---------------
-        # Ahora elimino las columnas de ID y Species
-        # Como es un dataframa axis=1 con las columnas y axis=0 las filas
-        # Utilizo el metodo drop para borrar las columnas para configurar el eje X (Horizontal)
-        # Indico el nombre de las columnas que deseo eliminar
-        X = df.drop(["species"],axis=1)
-        # Ha veces es necesario hacer esto para que no devuelva errores posteriormente
-        X = X.values
-        return X, Y
+        #----------------------#
+        #       WORK SHEET     #
+        #----------------------#
+        # grab the active worksheet
+        # This will create the active sheet on this work BOOK
+        ws = wb.active
+        #Provide le sheet with a name
+        ws.title = name
+        # With teh work book object we call the create fucntion
+        ws_1 = wb.create_sheet("Data")
+
+        return ws_1
 
     def training(X,Y):
         #--------- TRAIN and TEST Models ------------

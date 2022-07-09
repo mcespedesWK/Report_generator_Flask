@@ -49,6 +49,14 @@ To create a virtual environment we can do it with Anaconda. However, it is more 
 
 - We muus declare tha ENV VARS to be able to run the enviroment in Flask
 
+    pip install pyexcel-xls
+    pip install pyexcel-xlsx
+    pip install pyexcel-ods
+
+  - And please make sure that you have pyexcel-xls and pyexcel-handsontable installed:
+
+    pip install pyexcel-xls, pyexcel-handsontable
+
   ###### Windows
 
        set FLASK_APP = <main filename>
