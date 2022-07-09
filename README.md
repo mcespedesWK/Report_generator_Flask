@@ -45,27 +45,27 @@ To create a virtual environment we can do it with Anaconda. However, it is more 
 
       pip install Numpy
 
-- Vuelvo a hacer pip list y deberia de aparecer Djando installado con algunas dependencias
+- Run pip list again  and it should show Djando dependencies already installed
 
-- Ahora necesito declarar las variables de entorno para correr mi aplicacion
+- We muus declare tha ENV VARS to be able to run the enviroment in Flask
 
   ###### Windows
 
-       set FLASK_APP = <nombre del archivo de arranque> (en este caso: main)
+       set FLASK_APP = <main filename>
        set FLASK_ENV = development
 
   ###### Linux
 
-       export FLASK_APP=<nombre del archivo de arranque>
+       export FLASK_APP=<main filename>
 
-- Ahora extraemos esta información para que cualquier usuario pueda utilizarla.
-Esto se guarda en el archivo de requirements.
+- Now we extract this information so that any user can use it.
+This is saved in the requirements file.
 
      pip freeze > requirements.txt
 
-- Si se tiene un proyecto ya comenzado y se quiere instalar las librerias del archivo:
+- If you have a project already started and you want to install the libraries from the file:
 
-      pip install -r requirements.txt  (o el nombre del archivo)
+      pip install -r requirements.txt
 
 
 
@@ -73,34 +73,13 @@ Esto se guarda en el archivo de requirements.
 
  - [Repo](https://github.com/mcespedesWK/PythonSamples)
 
- ## Projects
-
- - [Basic Python](/BasicProgrammingExercises/)
-
- - [Create Libraries](/CreateLibraries/)
-
- - [Django](/Django/)
-
- - [Samples](/examples/)
-
- - [Flask](/Flask/)
-
- - [Modules](/ModulesPackages/)
-
- - [Web Devs](/my_projectWeb/)
-
- - [Sockets](/Sockets/)
-
- - [Threats](/Threats/)
-
- - [Tkinter](/Tkinter/)
-
 
  ## Built With
 
  - Python
  - HTML
  - CSS
+ - Flask
 
  ## Future Updates
 
