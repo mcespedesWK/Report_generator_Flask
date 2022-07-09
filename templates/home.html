@@ -1,0 +1,29 @@
+{% extends "registered_layout.html" %}
+{% block content %}
+<h2></h2>
+<br>
+<br>
+<br>
+  <h2 class="w3-light-gray">Buenos días {{session['user']}} !</h2>
+  <p>Esto es un ejemplo del Dataset:</p>
+  <div class="w3-container">
+      <table class="table table-hover">
+        <tr>
+          <td>
+            {% for key, value in sampleData.items() %}
+              <tr>
+                <td><strong>{{ key }}</strong></td>
+                <td>{{ value}}</td>
+              </tr>
+            {% endfor %}
+          </td>
+          <td>
+            <div class="w3-container">
+              <img src="{{ url_for('static', filename='img/irisimage.png')}}"" alt="IrisImage" width="500" height="300">
+            </div>
+          </td>
+        </tr>
+      </table>
+
+  </div>
+{% endblock %}

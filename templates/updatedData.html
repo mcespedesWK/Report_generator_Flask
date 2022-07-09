@@ -1,0 +1,48 @@
+{% extends "registered_layout.html" %}
+
+{% block content %}
+<h1>.</h1>
+<h1> Iris Dataset</h1>
+<br>
+<h3>{{info}}</h3>
+<br>
+<h3> Update Data:</h3>
+<table class="table table-hover">
+  <tr>
+    <th><label>Sepal Length:</label></th>
+    <td>
+      {{df["sepal_length"][id]}}
+    </td>
+  </tr>
+
+  <tr>
+    <th><label>Sepal Width:</label></th>
+    <td>
+      {{df["sepal_width"][id]}}
+    </td>
+
+  </tr>
+  <tr>
+    <th><label>Petal Length:</label></th>
+    <td>
+      {{df["petal_length"][id]}}
+    </td>
+  </tr>
+  <tr>
+    <th><label>Petal Width:</label></th>
+    <td>
+      {{df["petal_width"][id]}}
+    </td>
+
+    </tr>
+  <tr>
+    <th><label>Species:</label></th>
+    <td>
+      {{df["species"][id]}}
+    </td>
+
+  </tr>
+  </table>
+  <br>
+
+{% endblock %}

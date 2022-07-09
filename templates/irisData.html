@@ -1,0 +1,68 @@
+{% extends "registered_layout.html" %}
+{% include 'modals.html' %}
+{% block content %}
+  <h2></h2>
+  <br>
+  <br>
+  <br>
+  <h3>{{session['user']}},  aqui puedes modificar el Dataset:</h3>
+  <br>
+  <p>El data set contiene : <strong>{{count}} registros.</strong></p>
+  <div class="">
+    <!--llamo a mi modal a traves de javascript. Lo llame con INCLUDE en el r3gistered_layout.html -->
+    <button class="w3-button w3-round w3-green" onclick="document.getElementById('insertModal').style.display='block'" >New entry</button>
+    <button class="w3-button w3-round w3-indigo" onclick="document.getElementById('predictModal').style.display='block'">New prediction</button>
+  </div>
+  <br>
+  <div>
+    <table id="data" class="table table-hover">
+      <thead>
+        <tr class="w3-green">
+          <th>ID</th>
+          <th>Sepal L.</th>
+          <th>Sepal W.</th>
+          <th>Petal W.</th>
+          <th>Petal L.</th>
+          <th>Especie</th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for i in range(count)%}
+            <tr>
+              <form class="" action="/iris/{{i}}/update/" method="post">
+                <td>{{i}}</td>
+                <td>
+                  <a name="sl" value="{{i}}">{{df["sepal_length"][i]}}</a>
+                </td>
+                <td>
+                  <a name="sw" value="{{i}}">{{df["sepal_width"][i]}}</a>
+                </td>
+                <td>
+                  <a name="pl" value="{{i}}">{{df["petal_length"][i]}}</a>
+                </td>
+                <td>
+                  <a  name="pw" value="{{i}}">{{df["petal_width"][i]}}</a>
+                </td>
+                <td>
+                  <a name="s" value="{{i}}">{{df["species"][i]}}</a>
+
+                </td>
+                <td>
+                  <input name="i" value="{{i}}" type ="hidden">
+                  <button class="w3-button w3-round w3-indigo" type="submit" name="Update" value="Update">UPDATE</button>
+                </td>
+              </form>
+
+              <td
+              </td>
+              <form action="/iris/{{i}}/delete/" method="POST">
+                 <input name="i" value="{{i}}" type ="hidden">
+                 <button class="w3-button w3-round w3-red" type="submit" name="Delete" value="Delete">DELETE</button>
+              </form>
+            </tr>
+          {%endfor%}
+      </tbody>
+    </table>
+
+  </div>
+{% endblock %}

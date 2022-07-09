@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mi primera app</title>
+    <meta name="description" content="Learming Python">
+
+    <!--Trabajo conesta libreria porque tiene muy buenos archivos CSS -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <!--Esto es para poder utilizar animaciones y Fa icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--Los recursos siempre tienen que estar en el folder STATIC
+        Es necesario utilizaar el URL_FOR para llamar a la direccion donde esta el recurso
+    -------->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <!----------------------------------------------------------------------->
+    <!----------------------NAVIGATION BAR----------------------------------->
+    <!----------------------------------------------------------------------->
+    <!-- Le indicamos que queremos q se desplige en forma de nav bar --->
+    <div class="w3-container" style="width :100%">
+        <div class="topnav">
+          <!-- LOGIN BUTTON-->
+          <a><i class="fa fa-fw fa-user"></i> {{session['user']}}</a>
+          <a class="active" href="{{ url_for('logout')}}" ><i class="fa fa-fw fa-sign-out"></i> Logout</a>
+
+        </div class="w3-container w3-bar-block w3-large">
+        <div class="">
+          <div class="w3-sidebar w3-bar-block w3-large w3-black">
+            <a class="w3-bar-item w3-button" href="{{ url_for('dashboard')}}" >Home</a>
+            <a class="w3-bar-item w3-button" href="{{ url_for('irisData')}}">Iris data</a>
+          </div>
+            <!-- Incluyo el html de modales para el login y register
+                COmo estan ten el mismo directorio solo escribo el nombre del html-------->
+            {% include "modals.html" %}
+            <div style="margin-left:20%">
+              {% block content %}
+
+              {% endblock %}
+            </div>
+        </div>
+
+      </div>
+  </body>
+
+</html>

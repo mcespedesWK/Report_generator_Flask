@@ -1,0 +1,33 @@
+{% extends "registered_layout.html" %}
+  {% block content %}
+  <h1></h1>
+  <h1>.</h1>
+    <h3>{{session['user']}}</h3>
+    <br>
+    <h4> Según la información procesada, estos son los resultados: </h4>
+    <br>
+    <table id="data" class="table table-hover">
+      <thead>
+        <tr class="w3-green">
+          <th>Sepal L.</th>
+          <th>Sepal W.</th>
+          <th>Petal W.</th>
+          <th>Petal L.</th>
+          <th><strong>Especie</strong></th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for i in testData%}
+        <tr>
+          <td>{{i[0]}}</td>
+          <td>{{i[1]}}</td>
+          <td>{{i[2]}}</td>
+          <td>{{i[2]}}</td>
+          <td style="background-color: orangered"><strong>{{result}}</strong></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <h6 > Entonces podemos decir que la especie es del tipo : <strong>{{result}}</strong></h6>
+  {% endblock %}

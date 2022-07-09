@@ -1,0 +1,222 @@
+{% block content %}
+
+<!----------------------------------------------------------------------->
+<!----------------------     INSERT MODAL   ------------------------------>
+<!----------------------------------------------------------------------->
+<!-- Utilizo un Modla para el login -->
+<!-- Con el ID el boton sabe a cual funcion llamar -->
+<div id="insertModal" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+      <!----------------------------------------------------------------------->
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('insertModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Insert Modal">&times;</span>
+      </div>
+      <!----------------------------------------------------------------------->
+
+      <!------------------------- FORM ----------------------------------------->
+      <form class="w3-container" action="/iris/insertData" method ='POST'>
+        <div class="w3-section">
+          <label><b>Sepal width</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Sepal width" name="sepal_width" required>
+
+          <label><b>Sepal lenght</b></label>
+          <input class="w3-input w3-border" type="text" placeholder="Enter Sepal lenght" name="sepal_lenght" required>
+
+          <label><b>Petal width</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Petal width" name="petal_width" required>
+
+          <label><b>Petal lenght</b></label>
+          <input class="w3-input w3-border" type="text" placeholder="Enter Petal lenght" name="petal_lenght" required>
+
+          <label><b>Specie</b></label>
+          <input class="w3-input w3-border" type="text" placeholder="Enter Specie" name="species" required>
+          <br>
+
+          <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button class="w3-button w3-green " type="submit">Send</button>
+            <button onclick="document.getElementById('insertModal').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+          </div>
+        </div>
+      </form>
+      <!------------------------- /FORM ----------------------------------------->
+
+      <!----------------------------------------------------------------------->
+
+      <!----------------------------------------------------------------------->
+
+    </div>
+  </div>
+
+<!----------------------------------------------------------------------->
+<!----------------------     DELETE MODAL   ------------------------------>
+<!----------------------------------------------------------------------->
+<!-- Utilizo un Modla para el login -->
+<!-- Con el ID el boton sabe a cual funcion llamar -->
+<div id="deleteModal" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+      <!----------------------------------------------------------------------->
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('deleteModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Insert Modal">&times;</span>
+      </div>
+      <!----------------------------------------------------------------------->
+      <h3>¿Seguro que deseas borrar este registro?</h3>
+      <!------------------------- FORM ----------------------------------------->
+      <form class="w3-container" action="/iris/{{i}}/delete/" method ='POST'>
+        <div class="w3-section">
+          <table class="table table-hover">
+              <tr>
+                  <th><label>Sepal Length:</label></th>
+                  <td><input name="sepal_length" value="1" disabled/></td>
+              </tr>
+              <tr>
+                  <th><label>Sepal Width:</label></th>
+                  <td><input name="sepal_width" value="1" disabled/></td>
+              </tr>
+              <tr>
+                  <th><label>Petal Length:</label></th>
+                  <td><input name="petal_length" value="1" disabled/></td>
+              </tr>
+              <tr>
+                  <th><label>Petal Width:</label></th>
+                  <td><input name="petal_width" value="1" disabled/></td>
+              </tr>
+              <tr>
+                  <th><label>Species:</label></th>
+                  <td><input name="species" value="1" disabled/></td>
+              </tr>
+          </table>
+          <br>
+          <!----------------------------------------------------------------------->
+          <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button onclick="document.getElementById('deleteModal').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+            <button class="w3-button  w3-green" type="submit" name="Delete" value="Delete">Delete</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<!----------------------------------------------------------------------->
+<!----------------------     PREDICT MODAL   ------------------------------>
+<!----------------------------------------------------------------------->
+<!-- Utilizo un Modla para el login -->
+<!-- Con el ID el boton sabe a cual funcion llamar -->
+<div id="predictModal" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+      <!----------------------------------------------------------------------->
+      <div class="w3-center"><br>
+        <span onclick="document.getElementById('predictModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Insert Modal">&times;</span>
+      </div>
+      <!----------------------------------------------------------------------->
+      <h3> Ingresa los datos para averiguar la especie</h3>
+      <!------------------------- FORM ----------------------------------------->
+      <form class="w3-container" action="/predictData" method ='POST'>
+        <div class="w3-section">
+          <label><b>Sepal Length</b></label>
+          <input class="w3-input w3-border w3-margin-bottom"  placeholder="Enter Sepal width" name="sepal_length" required>
+
+          <label><b>Sepal Width</b></label>
+          <input class="w3-input w3-border" type="text"  placeholder="Enter Sepal length" name="sepal_width" required>
+
+          <label><b>Petal lenght</b></label>
+          <input class="w3-input w3-border" type="text" placeholder="Enter Petal lenght" name="petal_length" required>
+
+          <label><b>Petal width</b></label>
+          <input class="w3-input w3-border w3-margin-bottom" placeholder="Enter Petal width" name="petal_width" required>
+
+
+          <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+            <button class="w3-button w3-green " type="submit">Send</button>
+            <button onclick="document.getElementById('predictModal').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+          </div>
+        </div>
+      </form>
+      <!------------------------- /FORM ----------------------------------------->
+
+      <!----------------------------------------------------------------------->
+
+      <!----------------------------------------------------------------------->
+
+    </div>
+  </div>
+  <!----------------------------------------------------------------------->
+  <!----------------------     LOGIN MODAL   ------------------------------>
+  <!----------------------------------------------------------------------->
+  <!-- Utilizo un Modla para el login -->
+  <!-- Con el ID el boton sabe a cual funcion llamar -->
+  <div id="loginModal" class="w3-modal">
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+        <!----------------------------------------------------------------------->
+        <div class="w3-center"><br>
+          <span onclick="document.getElementById('loginModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          <img src="{{ url_for('static', filename='img/avatar.webp') }}" alt="Avatar" style="width:20%" class="w3-circle w3-margin-top">
+        </div>
+        <!----------------------------------------------------------------------->
+
+        <!------------------------- FORM ----------------------------------------->
+        <form class="w3-container" action="/login" method ='POST'>
+          <div class="w3-section">
+            <label><b>Email</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter E-mail" name="email" required>
+
+            <label><b>Password</b></label>
+            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" required>
+            <!----------------------------------------------------------------------->
+            <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+              <button onclick="document.getElementById('loginModal').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+              <button class="w3-button  w3-green" type="submit">Login</button>
+            </div>
+
+          </div>
+        </form>
+        <!------------------------- /FORM ----------------------------------------->
+
+
+        <!----------------------------------------------------------------------->
+
+      </div>
+    </div>
+
+  <!----------------------------------------------------------------------->
+  <!----------------------     REGISTER    ----------------------------------->
+  <!----------------------------------------------------------------------->
+  <!-- Utilizo un Modla para el register -->
+  <!-- Con el ID el boton sabe a cual funcion llamar -->
+  <div id="registerModal" class="w3-modal">
+      <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="max-width:600px">
+        <!----------------------------------------------------------------------->
+        <div class="w3-center"><br>
+          <span onclick="document.getElementById('registerModal').style.display='none'" class="w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+          <img src="{{ url_for('static', filename='img/avatar.webp') }}" style="width:30%" class="w3-circle w3-margin-top">
+        </div>
+        <!----------------------------------------------------------------------->
+
+        <!------------------------- FORM ----------------------------------------->
+        <form class="w3-container" action="/register" method ='POST'>
+          <div class="w3-section">
+
+            <label><b>Name</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter Name" name="name" required>
+
+            <label><b>Email</b></label>
+            <input class="w3-input w3-border w3-margin-bottom" type="text" placeholder="Enter E-mail" name="email" required>
+
+            <label><b>Password</b></label>
+            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" required>
+
+            <label><b>Re-type Password</b></label>
+            <input class="w3-input w3-border" type="password" placeholder="Enter Password" name="password" required>
+
+            <button class="w3-button w3-block w3-green w3-section w3-padding" type="submit">Register</button>
+          </div>
+        </form>
+        <!------------------------- /FORM ----------------------------------------->
+
+        <!----------------------------------------------------------------------->
+        <div class="w3-container w3-border-top w3-padding-16 w3-light-grey">
+          <button onclick="document.getElementById('registerModal').style.display='none'" type="button" class="w3-button w3-red">Cancel</button>
+        </div>
+        <!----------------------------------------------------------------------->
+
+      </div>
+    </div>
+{% endblock %}

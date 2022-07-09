@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2></h2>
+<br>
+<h2><strong>Projecto en Flask</strong></h2>
+<h3>Escoje un usuario de prueba y haz click en Login.</h3>
+  <h3><strong>Usuarios de prueba:</strong></h3>
+  <div class="w3-container">
+          <table class="table table-hover">
+            <tr>
+              <td><p>Nombre</p></td>
+              <td><p>Email</p></td>
+              <td><p>Contraseña</p></td>
+            </tr>
+            {% for i in users %}
+                <tr>
+                    <td><strong>{{ i[1] }}</strong></td>
+                    <td><strong>{{ i[2] }}</strong></td>
+                    <td><strong>{{ i[3] }}</strong></td>
+                </tr>
+            {% endfor %}
+          </table>
+      </div>
+{% endblock %}
