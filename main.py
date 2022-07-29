@@ -385,4 +385,4 @@ if __name__ == "__main__":
     # Aqui activo el debuger en la aplicacion para poder ver los cambios en vivo cuando los hago
     # Esto es produccion ya no es recomendable
     # Aqui le indico el puerto 8080
-    app.run(debug=True)
+    app.run(host='0.0.0.0',port=80)
